@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -20,57 +20,61 @@
 
     <script>
 
-        let val1;
-        let val2;
-        let result;  
+        // Váriáveis do aplicativo
+        var val1, val2, result;
 
-        function el(elId) { return document.getElementById(elId) }
-        console.log(el("btnSum"));
-
-        el('btnSum').onclick = sum;
-        function sum() {
-            val1 = parseFloat(el("val1").value);
-            val2 = parseFloat(el("val2").value);
-            console.log(val1, val2);
-
-            if (notNumber(val1, val2))
-                return false
-
-            var result = val1 + val2;
-            el('result').value = result    
+        // Função que retorna um elemento do documento, selecionado pelo id
+        function el(elId) {
+            return document.getElementById(elId);
         }
 
+        // Função que testa e soma os valores do formulário.
+        function sum() {
+
+            // Recebe os valores do formulário e converte para números.
+            val1 = parseFloat(el('val1').value);
+            val2 = parseFloat(el('val2').value);
+
+            // Teste dos valores recebidos.
+            console.log(val1, val2);
+
+            // Se um deles ou ambos não são números sai da função.
+            if (notNumber(val1, val2)) return false;
+
+            // Se ambos são números, soma e armazena em 'result'.
+            result = val1 + val2;
+
+            // Exibe o resultado da operação no documento.
+            el('result').value = result;
+        }
+
+        /**
+         * Função que testa dois valores.
+         * Se un deles não for múmero, exibe um alerta e retorna true;
+         * Se ambos são números, apenas retorna false.
+         */
         function notNumber(v1, v2) {
 
             if (isNaN(v1) || isNaN(v2)) {
-
-                alert("Digite os valores para calcular: ")
-                return true
-
+                alert("Digite os valores para calcular.");
+                return true;
             } else {
-
-                return false
+                return false;
             }
+
         }
 
-        el('val1').onfocus = function () {
-            el('val1').select();
-            el('val2').onfocus = function () {
-                el('val2').select();
+        // Teste unitário de el()
+        console.log(el('btnSum'));
 
-            }
-        }
+        // Monitora cliques no elemento 'input#bntSum'
+        el('btnSum').onclick = sum;
 
-
-
-
-
-
-
+        // Monitora o foco nos campos
+        el('val1').onfocus = function () { el('val1').select(); }
+        el('val2').onfocus = function () { el('val2').select(); }
 
     </script>
-
-
 
 </body>
 
