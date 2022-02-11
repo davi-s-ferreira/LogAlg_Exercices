@@ -14,9 +14,14 @@
         <h3>Calculadora</h3>
         <input type="number" id="val1" placeholder="Valor 1"><br>
         <input type="number" id="val2" placeholder="Valor 2"><br>
-        <input type="button" id="btnSum" value="+"><br>
+        <input type="button" id="btnSum" value="+">&nbsp;
+        <input type="button" id="btnSub" value="–">&nbsp;
+        <input type="button" id="btnMul" value="x">&nbsp;
+        <input type="button" id="btnDiv" value="÷"><br>
         <input type="number" id="result" placeholder="Resultado" readonly>
     </form>
+    
+    
 
     <script>
 
@@ -47,6 +52,57 @@
             // Exibe o resultado da operação no documento.
             el('result').value = result;
         }
+
+        function sub() {
+
+            val1 = parseFloat(el('val1').value);
+            val2 = parseFloat(el('val2').value);
+
+            if (notNumber(val1, val2)) return false;
+
+            result = val1 - val2;
+
+            el('result').value = result;
+        }
+
+        console.log(el('btnSub'));
+
+        el('btnSub').onclick = sub;
+
+
+        function mul() {
+
+            val1 = parseFloat(el('val1').value);
+            val2 = parseFloat(el('val2').value);
+
+            if (notNumber(val1, val2)) return false;
+
+            result = val1 * val2;
+
+            el('result').value = result;
+        }
+
+        console.log(el('btnMul'));
+
+        el('btnMul').onclick = mul;
+
+        function div() {
+
+            val1 = parseFloat(el('val1').value);
+            val2 = parseFloat(el('val2').value);
+
+            if (notNumber(val1, val2)) return false;
+
+            result = val1 / val2;
+
+            el('result').value = result;
+        }
+
+        console.log(el('btnDiv'));
+
+        el('btnDiv').onclick = div;
+
+
 
         /**
          * Função que testa dois valores.
